@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %} <title>{{ post['title'] }}</title> {% endblock %}
+{% block body %}
+    <h1 align="center"> {{ post['title'] }}</h1>
+    <hr>
+    <div class="jumbotron">
+        <p>{{ post['description'] }}</p>
+        <h5 align="center">{{ post['baslik'] }}</h5>
+        <p>{{ post['metin'] }}</p>
+
+    </div>
+
+{% endblock %}

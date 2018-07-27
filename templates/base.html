@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    {% block title %} {% endblock %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    {% block head %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% endblock %}
+</head>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+    <h5 class="my-0 mr-md-auto font-weight-normal"><a class="p-2 text-dark" href="/">Anasayfa</a></h5>
+    <div class="dropdown">
+
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="p-2 text-dark" href="/about">Hakkımda</a>
+            <a class="p-2 text-dark" href="/contact">İletişim</a>
+            {% if user %}
+
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">{{ user['username']}}</button>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li><a href="/logout">Çıkış</a></li>
+            </ul>
+
+            {% else %}
+            <a class="p-2 text-dark" href="/login">Giriş</a>
+            {% endif %}
+        </nav>
+
+    </div>
+</div>
+<div class="container">
+    {% block body %} {% endblock %}
+</div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"/>
+
+{% block scripts %} {% endblock %}
+
+</body>

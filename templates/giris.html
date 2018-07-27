@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %} <title>{{ post['title'] }}</title> {% endblock %}
+{% block head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Signin Template for Bootstrap</title>
+
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="signin.css" rel="stylesheet">
+
+
+{% endblock %}
+
+{%  block body %}
+
+<form class="form-signin" method="post" action="/login">
+    <div class="conteiner col-md-4 offset-4 align-center">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <br>
+        <label for="username" class="sr-only">Username</label>
+        <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
+        <br>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+        <br>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </div>
+</form>
+
+
+{% endblock %}

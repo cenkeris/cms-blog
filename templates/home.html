@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %} <title> Anasayfa </title> {% endblock %}
+{% block body %}
+<div class="jumbotron">
+    <div class="container">
+        <h2 class="display-3">Yeni Haber</h2>
+        <h3> {{ last_item['title']}} </h3>
+        {% if last_item['description']|length > 200 %}
+        <p>{{ last_item['description'][0:197] }} ...</p>
+        {% else %}
+        <p>{{ last_item['description'] }}</p>
+        {% endif %}
+
+        {% if last_item %}
+        <p><a class="btn btn-primary btn-lg" href="/url{{ last_item['url'] }}" role="button">Detaylar »</a></p>
+        {% else %}
+        <h5>Üzgünüm Yeni Haber Yok !</h5>
+        {% endif %}
+
+
+    </div>
+</div>
+
+<div class="row">
+    {% for post in posts %}
+    <div class="col-md-4">
+        {% if post['title']|length > 20 %}
+        <h2>{{ post['title'][0:17] }}...</h2>
+        {% else %}
+        <h2>{{ post['title'] }}</h2>
+        {% endif %}
+
+        {% if post['description']|length > 200 %}
+        <p>{{ post['description'][0:197] }} ...</p>
+        {% else %}
+        <p>{{ post['description'] }}</p>
+        {% endif %}
+        <p><a class="btn btn-secondary" href="/url{{ post['url'] }}" role="button">Detaylar »</a>
+        </p>
+    </div>
+    {% endfor %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %} <title>{{ post['title'] }}</title> {% endblock %}
+{% block body %}
+<h1>{{ post['title'] }} </h1>
+<small>{{ post['sys']['published_by'] }}</small>
+<small>{{ post['sys']['published_at'] }}</small>
+<small></small>
+<hr>
+<div class="jumbotron">
+    {{ post['metin'] }}
+
+</div>
+
+<br>
+{% if post['comment'] %}
+<h2 align="center"> Yorumlar </h2>
+{% endif %}
+<div>
+    {% for comment in post.get('comment', []) %}
+    <h4>{{ post['sys']['published_by'] }}</h4>
+    <style type="text/css">
+    .cerceve {
+    background-color:#ffff99;
+    height: 50px;
+    width: 1000px;
+    border: 2px solid #ffff99;
+    padding: 2px;
+}
+    </style>
+    <div class="cerceve">
+    {{ comment['uzunmetin'] }}
+    </div>
+    <hr>
+    {% endfor %}
+</div>
+<br>
+<br>
+{% if user %}
+<form method="post" action="/url{{ post['url'] }}">
+    <div class="form-group">
+        <label for="comment">Your comment</label>
+        <input class="form-control input-lg" id="comment" name="comment" type="text">
+    </div>
+    <div>
+        <button type="submit" class="btn btn-info">Gönder</button>
+    </div>
+</form>
+<br><br>
+{% endif %}
+{% endblock %}
